@@ -1,10 +1,8 @@
 using System.Reflection;
 using System.Text;
-using CityInfo.Api;
 using CityInfo.Api.DbContexts;
 using CityInfo.Api.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
@@ -57,8 +55,6 @@ builder.Services.AddSwaggerGen(opt => {
 builder.Services.AddSingleton<FileExtensionContentTypeProvider>();
 
 builder.Services.AddTransient<IMailService, LocalMailService>();
-
-builder.Services.AddSingleton<CitiesDataStore>();
 
 builder.Services.AddDbContext<CityInfoContext>(opt =>
     opt.UseSqlite(builder.Configuration.GetConnectionString("CityInfoDbConnectionString")));
